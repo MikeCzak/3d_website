@@ -1,0 +1,1050 @@
+body {
+    font-family: sans-serif;
+    background-color: black;
+}
+
+#header {
+    height: 93px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#preloader {
+    position: absolute;
+    display: block;
+    left: 0px;
+    top: 0px;
+    opacity: 0.95;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    background-color: black;
+    z-index: 99;
+    opacity: 1;
+    -webkit-transition: opacity 1.1s ease-in;
+}
+
+#preloader p {
+    position: relative;
+    top: 45%;
+    width: 200px;
+    height: auto;
+    margin: auto;
+    color: #333;
+    font-family: sans-serif;
+    letter-spacing: 3px;
+    font-size: 0.7em;
+    font-weight: 100;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-in;
+    
+}
+
+#loading {
+    position: relative;
+    top: 48%;
+    margin: auto;
+    width: 60px;
+    height: 10px;
+    background-image: url("../img/loading.png");
+    background-size: 190px 10px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    opacity: 1;
+    -webkit-transition: opacity 1s ease-in;
+    -webkit-animation: loading 1s steps(13) infinite;
+}
+
+@-webkit-keyframes loading {
+    from {background-position: 0px 0px }
+    to {background-position: -130px 0px }
+}
+
+.stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+    
+    
+    -webkit-perspective: 1000px;
+    -webkit-perspective-origin: 50% 50%;
+    -webkit-filter: blur(0px);
+    /*-webkit-transition: all 2s ease-in;*/
+    /*-webkit-transition: -webkit-filter 0.1s ease-in;*/
+}
+
+.stage div, .stage img {
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    display: block;
+    
+    
+}
+
+
+
+#debug_box {
+    display: none;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    width: 300px;
+    background-color: rgba(0,0,0, 0.4);
+    font-family: sans-serif;
+    padding: 5px;
+    font-size: 0.8em;
+    
+}
+
+#debug_scroll {
+    position: relative;
+    width: 100%;
+    display: block;
+    background-color: rgba(0,0,0, 0.2);
+    color: lime;
+    font-family: sans-serif;
+}
+
+
+#debug_elements {
+    display: block;
+    margin: 2px;
+    background-color: rgba(0,0,0, 0.2);
+    color: white;
+    font-family: sans-serif;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+
+#debug_elements p {
+    display: block;
+    margin: 2px;
+    background-color: rgba(0,0,0, 0.2);
+    color: white;
+    font-family: sans-serif;
+}
+
+#debug_keypress {
+    display: block;
+    margin: 2px;
+    background-color: rgba(0,0,0, 0.5);
+    color: white;
+    font-family: sans-serif;
+}
+
+#debug_3d {
+    display: block;
+    margin: 2px;
+    background-color: rgba(0,0,0, 0.5);
+    color: lime;
+    font-family: sans-serif;
+}
+
+
+#content {
+    width: 100%;
+    height: 100%;
+    -webkit-transform-origin: 50% 50%;
+    
+}
+
+#content div, #content img {
+    -webkit-box-sizing: content-box;
+    -webkit-transform-origin: 50% 50%;
+    margin: 0px !important;
+    padding: 0px !important;
+    border: none;
+}
+
+
+#x_axis {
+    width: 2000px;
+    height: 1px;
+    border-bottom: 2px dashed red !important;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    
+}
+
+#y_axis {
+    width: 1px;
+    height: 900px;
+    border-right: 2px dashed blue !important;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}
+
+#z_axis {
+    width: 2000px;
+    height: 1px;
+    border-bottom: 2px dashed green !important;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+}
+
+#crosshair {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    z-index: 9999;
+}
+
+#plane {
+    display: none;
+    width: 2000px;
+    height: 2000px;
+    background: -webkit-radial-gradient(#eee, #ddd);
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: translateX(0px) translateY(0px) translateZ(0px) rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.flat {
+    background-color: rgba(0, 150, 0, 0.1);
+    position: absolute;
+}
+
+.img_element {
+    
+    position: absolute;
+    -webkit-transform-origin: 50% 50%;   
+}
+
+/*.img_shader {
+    background-color: rgba(0,0,0, 0.6);
+    
+}*/
+
+.block {
+    display: block;
+    position: absolute;
+    -webkit-transform-origin: 50% 50%;
+}
+
+.block div {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    
+    background-color: rgba(90, 60, 60, 1);
+    -webkit-transform-origin: 50% 50%;
+}
+
+.tube div {
+    position: absolute;
+    background-color: #333;
+}
+
+
+
+
+
+.group {
+    display: block;
+    position: absolute;
+}
+
+.shader_flat, .shader_block_front, .shader_block_back, .shader_block_left, .shader_block_right, .shader_block_top, .shader_block_bottom {
+    display: block;
+    position: absolute;
+    background-repeat: no-repeat;
+    -webkit-backface-visibility: visible;
+}
+
+.dropshadow {
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 0px;
+    box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.95);
+}
+
+.dropshadow_rounded {
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.95) 60%, transparent 60%);
+    border-radius: 100%;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.95);
+    -webkit-transform: scaleY(0.5);
+    
+}
+
+.dropshadow_container {
+    -webkit-transform-origin: center bottom !important;
+    display: block;
+    position: absolute;
+}
+
+
+.light {
+    display: none !important;
+}
+
+
+
+
+/* INVENTORY */
+
+
+
+
+.inv_small {
+    position: relative;
+    float: left;
+    display: inline-block;
+    z-index: 10;
+    margin: 15px 50px;
+    width: 50px;
+    height: 50px;
+    border: 10px solid #ddd;
+    border-radius: 1px;
+    background-color: #ddd;
+    background-size: contain;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.2s ease-in-out;
+}
+
+.inv_big {
+    display: block;
+    position: absolute;
+    float: none;
+    top: 100px;
+    z-index: 10;
+    margin: auto;
+    height: 500px;
+    width: 500px;
+    min-width: 10px;
+    overflow: auto;
+    border: none;
+    border-radius: 0px;
+    background-color: #ddd;
+    background-size: auto 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+#inventory div:hover {
+    border: 3px solid #ddd;
+    -webkit-transition: all 0.2s ease-in-out;
+    -webkit-transform: translate(0px, -30px) scale(4);
+}
+
+#inventory {
+    position: absolute;
+    width: 90%;
+    height: 100px;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 10%;
+    -webkit-transition: opacity 0.2s ease-in-out;
+}
+
+#inventory_box {
+    display: none;
+    position: fixed;
+    bottom: 40px;
+    left: 5%;
+    width: 90%;
+    height: 100px;
+    opacity: 0.08;
+    -webkit-transition: opacity 0.2s ease-in-out;
+}
+
+#inventory_box:hover {
+    opacity: 0.4;
+    -webkit-transition: opacity 0.2s ease-in-out;
+}
+
+#inventory_box h2 {
+    position: absolute;
+    padding: 10px;
+    left: -15px;
+    top: -15px;
+    background-color: white;
+    border-radius: 5px;
+    color: #777;
+    font-size: 1em;
+    z-index: 15;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================================================================
+
+   OBJECT CUSTOMIZATION 
+
+   ======================================================================================== */
+
+
+#flat_night {
+    background: url("../img/night.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#flat_wall_front_u,
+#flat_wall_front_o,
+#flat_wall_front_l,
+#flat_wall_front_m,
+#flat_wall_front_r,
+#flat_wall_left,
+#flat_wall_right,
+#flat_wall_back {
+    background: url("../img/tapete_cream.jpg");
+    background-size: 200px;
+    background-repeat: repeat;
+}
+
+#flat_floor {
+    background: url("../img/floor_texture.jpg");
+    background-size: 60% 60%;
+}
+
+#flat_fireplace_floor {
+    /*background: url("../img/floor_texture.jpg");*/
+    background-color: #1d1a19;
+    background-size: 80% 80%;
+    background-position: -10% 10%;
+    background-repeat: no-repeat;
+}
+
+#flat_fireplace_floor .shader_flat {
+    /*background: -webkit-radial-gradient(50% 50%, circle, transparent 30%, rgba(0, 0, 0, 0.8) 50%);*/
+}
+
+#flat_carpet {
+    background: url("../img/carpet_texture.jpg");
+    background-size: auto;   
+}
+
+#flat_carpet .shader_flat {
+
+}
+
+#flat_ceiling {
+    background: url("../img/woodwall.jpg");
+    background-size: 1000px;
+}
+
+#flat_baseboard_front, #flat_baseboard_back, #flat_baseboard_left, #flat_baseboard_right {
+    background: url("../img/table_texture.jpg");
+    background-size: auto;
+    background-position: center;
+}
+
+#flat_baseboard_front .shader_flat, #flat_baseboard_back .shader_flat {
+    box-shadow: 0px 0px 2px 2px #000;
+    /*height: 12px !important;*/
+}
+
+#flat_baseboard_left .shader_flat, #flat_baseboard_right .shader_flat {
+    box-shadow: 0px 0px 2px 2px #000;
+    /*width: 12px !important;*/
+}
+
+.window_frame {
+    background: url("../img/table_texture.jpg");
+    background-size: auto;
+    background-position: bottom;
+}
+
+/* COUCH 1 */
+
+#block_couch_back .block_front {
+    border-radius: 20px;
+    background: url("../img/couch_back.jpg");
+    background-size: 450px 120px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
+#block_couch_base .block_top {
+    border-radius: 20px;
+    background: url("../img/couch_pattern.jpg");
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    background-position: -30px -40px;
+}
+
+#block_couch_base div, #block_couch_back div, #block_couch_rest_l div, #block_couch_rest_r div {
+    border-radius: 20px;
+    background: url("../img/couch_texture.jpg");
+    background-size: contain;
+}
+
+#block_couch_back .shader_block_bottom, #block_couch_rest_l .shader_block_bottom, #block_couch_rest_r .shader_block_bottom,
+#block_couch_back2 .shader_block_bottom, #block_couch_rest_l2 .shader_block_bottom, #block_couch_rest_r2 .shader_block_bottom {
+    /*display: none;*/
+}
+
+
+
+
+
+/* COUCH 2 */
+
+#block_couch_back2 .block_back {
+    border-radius: 10px;
+    background: url("../img/couch2_back.jpg");
+    background-size: 450px 120px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+}
+
+#block_couch_base2 .block_top {
+    border-radius: 10px;
+    background: url("../img/couch2_pattern.jpg");
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    background-position: -30px -40px;
+}
+
+#group_couch2 div div {
+    border-radius: 10px;
+    background: url("../img/couch2_texture.jpg");
+    background-size: cover;
+    
+}
+
+
+
+
+/* LED ZEP FLAG */
+
+
+#flat_ledzep {
+    background: url("../img/ledzep.jpg");
+    background-size: 100% 100%;
+}
+
+
+
+#block_spot_ledzep div {
+    background-color: black;
+}
+
+#block_spot_ledzep div div {
+    display: none;
+}
+
+#block_spot_ledzep .block_bottom {
+    background: -webkit-linear-gradient(left, black 0%, black 40%, white 50%, black 60%);
+}
+#flat_ledzep .shader_flat {
+    
+    background: -webkit-radial-gradient(50% 5%, ellipse, transparent 0%, rgba(0, 0, 0, 0.9) 80%) !important;
+}
+
+
+#flat_skyline {
+    background: url("../img/skyline.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#flat_skyline div {
+    display: none;
+}
+
+
+
+
+
+/* COUCH TABLE */
+
+#group_table2 div {
+    background: url("../img/table_texture.jpg");
+    background-size: cover;
+    
+}
+
+#group_table3 div {
+    background: url("../img/table_texture.jpg");
+    background-size: cover;
+    
+}
+
+#tube_ashtray div {
+    background-color: #281f01;
+}
+
+
+#tube_ashtray .tube_bottom {
+    background: -webkit-radial-gradient(50% -60%, circle, #281f01 20%, black 100%) !important;
+}
+
+#dropshadow_tube_ashtray .dropshadow_rounded {
+    -webkit-transform: none;
+    
+}
+
+#tube_ashtray .tube_top {
+    display: none !important;
+}
+
+#block_cigarette .block_top {
+    background: -webkit-linear-gradient(bottom, #754500, #222 3%, #222 20%, #222 30%);
+}
+
+#block_cigarette .block_bottom {
+    background: -webkit-linear-gradient(top, #754500, #222 3%, #222 20%, #444 30%);
+}
+
+#block_cigarette .block_right{
+    background: -webkit-linear-gradient(left, #754500, #222 3%, #222 20%, #444 30%);
+}
+
+#block_cigarette .block_left{
+    background: -webkit-linear-gradient(right, #754500, #222 3%, #222 20%, #444 30%);
+}
+
+#block_cigarette .block_front {
+    background: #000 !important;
+}
+
+#block_cigarette .block_back {
+    background: #333 !important;
+}
+
+#block_cigarette div div {
+    display: none !important;
+}
+
+#flat_smoke {
+    background: url("../img/smoke.png");
+    background-size: 15px 200px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    -webkit-mask-image: -webkit-linear-gradient(bottom, black 0%, transparent 100%);
+    mask-mode: alpha;
+    -webkit-animation: smoking 4s linear infinite;
+}
+
+@-webkit-keyframes smoking {
+    0% {background-position: center top;}
+    100% {background-position: center bottom;}
+}
+
+
+#flat_fire {
+    background: url("../img/fire_sprite.png");
+    background-size: 1872px 1500px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    -webkit-animation:  burning_h .3s steps(6) infinite,
+                        burning_v 1.8s steps(6) infinite;
+    opacity: .8;
+}
+
+@-webkit-keyframes burning_h {
+    from { background-position-x: 0px }
+    to { background-position-x: -1872px }
+}
+@-webkit-keyframes burning_v {
+    0% {background-position-y: 0}
+    100% {background-position-y: -1500px}
+}
+
+#tube_cup div {
+    background-color: #211;
+}
+
+#tube_cup .tube_top {
+    background-color: #0a0704;
+    left: 4px !important;
+    bottom: -12px !important;
+    width: 18px !important;
+    height: 18px !important;
+}
+
+#tube_cup .tube_top_shader {
+    display: none !important;
+}
+
+#dropshadow_tube_cup .dropshadow_rounded {
+    -webkit-transform: none;
+    
+}
+
+#flat_sheet1 {
+    background: url("../img/sheet1.jpg");
+    background-size: 100% 100%;
+}
+
+#flat_sheet2 {
+    background: url("../img/sheet1_edge.jpg");
+    background-size: 100% 100%;
+}
+
+.pickable_hover {
+    border: 2px solid red !important;
+    border-radius: 2px;
+}
+
+#flat_portrait {
+    background: url("../img/portrait_mike.png");
+    background-size: cover;
+}
+
+#flat_smoking {
+    background: url("../img/smoking.png");
+    background-size: contain;
+}
+
+
+/* SEAT 1 */
+
+#tube_seat1 > div {
+    background: url("../img/couch_texture.jpg");
+}
+
+#tube_seat1 .inner_shader {
+    background: black !important;
+}
+#tube_seat1 .tube_top {
+    /*display: none;*/
+}
+
+
+
+/* BOOKSHELF */
+
+#block_bookshelf div, #block_bookshelf2 div {
+    background: url("../img/table_texture.jpg");
+    background-size: auto;
+    background-repeat: repeat
+}
+
+.books .block_right {
+    background: url("../img/books.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.books .block_left, .books .block_top, .books .block_bottom, .books div div {
+    display: none;
+}
+
+.books .block_front {
+    background: -webkit-linear-gradient(bottom, #0a0807 48px, transparent 48px);
+}
+
+.books .block_back {
+    background: -webkit-linear-gradient(top, #252734 54px, transparent 54px);
+    -webkit-backface-visibility: hidden;
+}
+
+
+
+
+
+/* LAMP FRONT */
+
+
+.lamp div {
+    background-color: #c7c0b8;
+    opacity: 0.85;
+}
+
+#group_lamp_front div:nth-child(1) .tube_top, #group_lamp_front div:nth-child(2) .tube_top, #group_lamp_front div:nth-child(5) .tube_bottom, #group_lamp_front div:nth-child(6) .tube_bottom {
+    display: none;
+    
+}
+
+#group_lamp_front div div div, #group_lamp_front div div div div {
+    display: none;
+}
+
+#block_lamp_base div {
+    background-color: #333;
+}
+
+#block_lamp_base div div {
+    display: block;
+}
+
+#dropshadow_lamp_base div {
+    box-shadow: 0px 0px 3px 3px #000;
+}
+
+
+
+/* CURTAINS */
+
+
+.curtain {
+    /*display: none !important;*/
+    background: url("../img/curtains.png");
+    background-size: auto 100%;
+}
+
+.curtain .shader_flat {
+    bottom: 10px !important;
+    height: 390px !important;
+}
+
+#dropshadow_flat_curtain1, #dropshadow_flat_curtain4 {
+    box-shadow: 0px 0px 15px 10px #000;
+}
+
+#dropshadow_flat_curtain2, #dropshadow_flat_curtain3 {
+    box-shadow: 0px 0px 10px 10px #000;
+}
+
+
+
+/* STAGE */
+
+#block_stage_base div {
+    background: url("../img/black_carpet.jpg");
+    background-size: 25px;
+}
+
+#block_stage_base .shader_block_top {
+    background: url("../img/stage_shader.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: -90px 0px !important;
+}
+
+.micstand div {
+    background-color: #151515;
+}
+
+#dropshadow_tube_micstand_1 .dropshadow, #dropshadow_tube_micstand_2 .dropshadow, #dropshadow_tube_micstand_3 .dropshadow, #dropshadow_tube_micstand_4 .dropshadow, #dropshadow_tube_micstand_5 .dropshadow, #dropshadow_tube_mic .dropshadow {
+    box-shadow: 0px 0px 2px 1px;
+}
+
+.micstand .tube_top, .micstand .tube_bottom {
+    display: none;
+}
+
+#tube_micstand_5 div div {
+    opacity: 0.6;
+}
+
+#tube_micstand_4 .tube_top {
+    display: block;
+    background-color: black;
+}
+
+#tube_mic .inner_shader {
+    display: block;
+    background-color: orange !important;
+}
+
+#block_spot1 .block_left, #block_spot1_copy .block_left, #block_spot3 .block_left {
+    background: url("../img/spot_front.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.spot div {
+    background-color: #050505;
+}
+
+.spot_cover {
+    background: -webkit-linear-gradient(left, #050505, #222);
+}
+
+.monitor div {
+    background-color: #030303;
+}
+
+#block_chair5 div, #block_chair6 div, #block_chair7 div, #block_chair8 div {
+    background: url("../img/table_texture.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.chair div {
+    background: url("../img/table_texture_upright.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.chair div div {
+    background: -webkit-linear-gradient(bottom, rgba(0,0,0, 0.6) 0%, rgba(0,0,0, 0.3) 95%, black 96%) !important;
+}
+
+#block_chair6 div div {
+    background: -webkit-linear-gradient(left, rgba(0,0,0, 0.5) 0%, rgba(0,0,0, 0.5) 40%, rgba(0,0,0, 0.7) 42%, rgba(0,0,0, 0.7) 70%, rgba(0,0,0, 0.5) 72%) !important;
+}
+
+#block_chair5 div div {
+    background: -webkit-linear-gradient(right, rgba(0,0,0, 0.5) 0%, rgba(0,0,0, 0.5) 40%, rgba(0,0,0, 0.7) 42%, rgba(0,0,0, 0.7) 70%, rgba(0,0,0, 0.5) 72%) !important;
+}
+
+#group_dropshadows_chair1 div {
+    opacity: 0.8;
+    
+}
+
+#group_dropshadows_chair2 div {
+    opacity: 0.5;
+    
+}
+
+#group_dropshadows_chair3 div {
+    opacity: 0.5;
+}
+
+
+#img_guitar_neck_back {
+-webkit-backface-visibility: hidden;
+}
+
+
+#block_kamin_base .block_back, #block_kamin_base .block_top {
+    background: url("../img/marmor.jpg");
+}
+
+#block_kamin_base .block_left, #block_kamin_base .block_right, #block_kamin_base .block_bottom {
+    background: url("../img/marmor_side.jpg");
+}
+
+
+
+#block_kamin_top .block_top, #block_kamin_top .block_bottom {
+    background: url("../img/wood_texture.jpg");
+    background-size: 66%;
+}
+
+#block_kamin_top .block_back, #block_kamin_top .block_front, #block_kamin_top .block_right, #block_kamin_top .block_left {
+    background: url("../img/wood_texture.jpg");
+    background-size: 40%;
+}
+
+#block_kamin_middle .block_back {
+    background: url("../img/kamin_front.png");
+    background-size: contain;
+}
+
+#block_kamin_middle .block_left, #block_kamin_middle .block_front, #block_kamin_middle .block_right {
+    background: url("../img/kamin_side.jpg");
+    background-size: contain;
+}
+
+#block_kamin_base .shader_block_top {
+    background: -webkit-radial-gradient(50% 50%, circle, transparent 0%, rgba(0, 0, 0, 0.95) 80%);
+}
+
+#block_kamin_middle .block_bottom, #block_kamin_middle .shader_block_bottom {
+    display: none;
+}
+
+
+
+#block_kamin_middle .shader_block_back, #block_kamin_middle .shader_block_front {
+    background: -webkit-radial-gradient(50% 88%, circle, transparent 30%, rgba(0, 0, 0, 0.9) 50%);
+}
+
+
+
+
+
+/* Presentation */
+/*
+#block_heading1 * {
+    
+    background: lightblue;
+    border: 1px solid red !important;
+}
+
+boody {
+    background: white;
+}
+
+#coontent * {
+    display: none;
+}
+
+#x_axis, #y_axis, #z_axis {
+    display: block;
+}
+
+#group_wall_front, #flat_wall_left, #flat_wall_right, #flat_wall_back, #flat_ceiling, #flat_floor, #flat_carpet, #flat_baseboard_front, #flat_baseboard_back, #flat_baseboard_left, #flat_baseboard_right {
+    display: none;
+}
+
+#group_window1, #group_window2, #flat_night {
+    display: none;
+}
+
+#flat_curtain1, #flat_curtain2, #flat_curtain3, #flat_curtain4, #tube_curtain_rail1, #tube_curtain_rail2 {
+    display: none;
+}
+
+#group_table2, #group_couch, #group_couch2, #flat_ledzep, #block_spot_ledzep, #flat_sheet1, #flat_sheet2, #block_cigarette, #flat_smoke, #tube_ashtray, #tube_cup, #tube_seat1 {
+    display: none;
+}
+
+#group_kamin, #flat_fire, #flat_fireplace_floor {
+    display: none;
+}
+
+#block_bookshelf, #block_bookshelf2, #block_books, #block_books2 {
+    display: none;
+}
+
+#block_stage_base, #block_monitor1, #block_monitor2, #group_microphone, #group_spot1, #group_spot2, #group_spot3, #group_chair1, #group_guitar {
+    display: none;
+}
+
+#video_danke_sogn {
+    display: none;
+}
+
+flat_night {
+    display: none;
+}
+
+#group_lamp_front, .shader_flat, .shader_block_back, .shader_block_bottom, .shader_block_front, .shader_block_left, .shader_block_right, .shader_block_top, .inner_shader, .tube_top_shader {
+    display: none;
+}
+
+.dropshadow, .dropshadow_container, .dropshadow_rounded {
+    display: none;
+}
+
+.text h1 {
+    font-size: 2em;
+}
+.text li {
+    display: none;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 1.4em;
+}
+
+block_carl1 * {
+    background-color: rgba(0,0,0,0.5);
+}
+
+#flat_welcome {
+    background: rgba(0,0,0,0.5);
+}
+*/

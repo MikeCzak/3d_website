@@ -1,0 +1,468 @@
+
+
+a, a:visited {
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+}
+
+#bg_dimmer {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    visibility: visible;
+}
+
+#header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 99;
+}
+
+
+
+/* MENU */
+
+input[type="radio"] {
+    display: none;
+}
+
+.contents {
+    display: none;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid transparent;
+    border-width: 1px 1px;
+    overflow-y: scroll;
+    min-height: 50px;
+    z-index: 5;
+    -webkit-transition: all 0.6s 0.3s ease-in-out;
+    -moz-transition: all 0.6s 0.3s ease-in-out;
+    -o-transition: all 0.6s 0.3s ease-in-out;
+    transition: all 0.6s 0.3s ease-in-out;
+}
+
+.contents .text_block {
+    opacity: 0.5;
+    margin-right: 10px;
+    padding: 5px 5px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.contents .text_block p {
+    max-width: 300px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+#home_container {
+    position: fixed;
+    top: 83%;
+    left: 4%;
+    right: 76%;
+    bottom: 4%;
+}
+
+#music_container {
+    position: fixed;
+    top: 83%;
+    left: 28%;
+    right: 52%;
+    bottom: 4%;
+}
+
+#press_container {
+    position: fixed;
+    top: 83%;
+    left: 52%;
+    right: 28%;
+    bottom: 4%;
+}
+
+#contact_container {
+    position: fixed;
+    top: 83%;
+    left: 76%;
+    right: 4%;
+    bottom: 4%;
+}
+/*
+input[type="radio"]:checked + .contents {
+
+    position: absolute !important;
+    display: block !important;
+    border: 10px solid transparent;
+    border-width: 20px 10px;
+    text-align: left;
+    top: 150px !important;
+    left: 20px !important;
+    right: 20px !important;
+    bottom: 20% !important;
+    overflow-y: scroll;
+    opacity: 1;
+    min-height: 200px;
+    padding: 0px 10px;
+    text-align: center;
+    -webkit-transition: all 0.6s 0.6s ease-in-out;
+    -moz-transition: all 0.6s 0.6s ease-in-out;
+    -o-transition: all 0.6s 0.6s ease-in-out;
+    transition: all 0.6s 0.6s ease-in-out;
+}
+
+input[type="radio"]:checked + .contents .text_block {
+    opacity: 1;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    -webkit-transition: all 0.3s 1.1s ease-in-out;
+    -moz-transition: all 0.3s 1.1s ease-in-out;
+    -o-transition: all 0.3s 1.1s ease-in-out;
+    transition: all 0.3s 1.1s ease-in-out;
+}
+
+
+
+input[type="radio"]:checked + .contents .text_block p {
+    max-width: 400px;
+    -webkit-transition: all 0.5s 1.1s ease-in-out;
+    -moz-transition: all 0.5s 1.1s ease-in-out;
+    -o-transition: all 0.5s 1.1s ease-in-out;
+    transition: all 0.5s 1.1s ease-in-out;
+}
+
+*/
+
+
+
+
+
+
+
+#navbar {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding: 5px;
+    margin-top: 15px;
+    margin-right: 15px;
+}
+
+#navbar ul {
+    padding: 0px;
+    margin: 0px;
+    list-style-type:none;
+    list-style-image:none;
+}
+
+#navbar li.nav1 {
+    float: left;
+    text-align: center;
+    margin: 5px;
+}
+
+.nav1 a {
+    float: left;
+    width: 100px;
+    padding: 10px 0px;
+}
+
+.nav1 ul {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: -60px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.nav1 a, .nav2 a {
+    border: 1px solid #333;
+    
+    border-radius: 5px;
+    color:grey;
+    font-weight:bold;
+    text-decoration:none;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-size: 450px;
+    background-position: bottom left;
+    -webkit-transition: all 0.15s;
+    -moz-transition: all 0.15s;
+    -o-transition: all 0.15s;
+    transition: all 0.15s;
+}
+
+
+.nav2 a {
+        float:left;
+        width: 100px;
+        padding: 10px 0px;
+        margin: 2px 0px;
+        position: relative;
+        top: 0;
+        clear: both;
+        font-size:16px;
+        z-index: 10;
+        
+        -webkit-transition: all 0.15s;
+        -moz-transition: all 0.15s;
+        -o-transition: all 0.15s;
+        transition: all 0.15s;
+}
+
+.nav2 {
+   z-index: 10;
+}
+
+#navbar a:hover, .nav1.on a {
+    background-color: grey;
+    color: white;
+}
+
+
+.nav1:hover ul {
+    display: block;
+    opacity: 1;
+    position: absolute;
+    top: 52px;
+   z-index: 10;
+}
+
+#navbar_checkbox {
+    display: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+#menu_icon {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: 80px;
+    visibility: hidden;
+    z-index: 99;
+}
+
+
+
+
+
+
+
+.contents::-webkit-scrollbar {
+    width: 1px;
+}
+
+input[type="radio"]:checked + .contents::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 5px;
+    opacity: 0.3;
+    -webkit-transition: opacity 3s ease-in-out;
+}
+
+input[type="radio"]:checked + .contents::-webkit-scrollbar-thumb {
+    opacity: 1;
+    -webkit-transition: opacity 3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #333;
+    border-radius: 5px;
+}
+
+
+
+.text_block {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    min-width: 280px;
+    background-color: rgba(250, 250, 250, 0.7);
+    border-radius: 5px;
+    padding: 10px 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+
+.text_block:last-child {
+margin-bottom: 20px;
+}
+
+.text_block p {
+    max-width: 400px;
+    text-align: justify;
+}
+
+.stretch {
+    width: calc(100% - 30px);
+    display: block;
+}
+
+.stretch p {
+    max-width: 100% !important;
+}
+
+
+
+/* HEADINGS */
+
+h1 {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-top: 0px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1em;
+    color: #707070;
+    z-index: 6;
+    -webkit-transition: all 0.6s 0.3s ease-in-out;
+}
+
+.close_button {
+    position: fixed;
+    right: 5px;
+    top: 130px;
+    opacity: 0.2;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: 100;
+    font-size: 1.4em;
+    line-height: 1.3em;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    z-index: 50;
+    opacity: 0;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+
+input[type="radio"]:checked ~ .close_button {
+    opacity: 1;
+    -webkit-transition: all 0.2s 1.2s;
+    -moz-transition: all 0.2s 1.2s;
+    -o-transition: all 0.2s 1.2s;
+    transition: all 0.2s 1.2s;
+}
+
+
+
+
+h2 {
+    font-size: 1.2em;
+    margin-top: 0px;
+    text-align: left;
+    -webkit-transition: font-size 0.3s 0.6s ease-in-out;
+    -moz-transition: font-size 0.3s 0.6s ease-in-out;
+    -o-transition: font-size 0.3s 0.6s ease-in-out;
+    transition: font-size 0.3s 0.6s ease-in-out;
+}
+
+input[type="radio"]:checked + h2 {
+    font-size: 1.5em;
+    -webkit-transition: font-size 0.3s 0.6s ease-in-out;
+    -moz-transition: font-size 0.3s 0.6s ease-in-out;
+    -o-transition: font-size 0.3s 0.6s ease-in-out;
+    transition: font-size 0.3s 0.6s ease-in-out;
+}
+
+h4 {
+    text-align: right;
+}
+
+
+
+/* DYNAMIC HEADERS */
+
+
+
+.dynamic_header {
+    position: absolute;
+    left: -100px;
+    top: 70px;
+    margin-left: 3px;
+    background-color: rgba(255, 255, 255, 0.8);
+    min-width: 100px;
+    font-size: 2em;
+    color: black;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    opacity: 0;
+    z-index: 5;
+}
+
+input[type="radio"]:checked + div + div.dynamic_header {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    opacity: 1;
+    -webkit-transition: all 0.1s 1.6s ease-in-out;
+    -moz-transition: all 0.1s 1.6s ease-in-out;
+    -o-transition: all 0.1s 1.6s ease-in-out;
+    transition: all 0.1s 1.6s ease-in-out;
+}
+
+
+
+
+
+/* END DYNIAMIC HEADERS */
+/* END HEADINGS */
+
+
+
+
+
+
+
+p {
+    text-align: left;
+}
+
+.comment {
+    background-color: black !important;
+    border-radius: 3px;
+    padding: 2px;
+    color: white !important;
+}
+
+
+
